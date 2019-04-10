@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.dao.GroundHistorMapper">
+  <resultMap id="BaseResultMap" type="com.springmvc.entity.GroundHistor">
+    <id column="ground_histor_meteo_data_tab_id" jdbcType="VARCHAR" property="groundHistorMeteoDataTabId" />
+    <result column="pre" jdbcType="DOUBLE" property="pre" />
+    <result column="tem_max" jdbcType="DOUBLE" property="temMax" />
+    <result column="tem_min" jdbcType="DOUBLE" property="temMin" />
+    <result column="month" jdbcType="INTEGER" property="month" />
+    <result column="station_name" jdbcType="VARCHAR" property="stationName" />
+    <result column="station_number" jdbcType="VARCHAR" property="stationNumber" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="pre_6h" jdbcType="DOUBLE" property="pre6h" />
+    <result column="gst" jdbcType="DOUBLE" property="gst" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="hour" jdbcType="INTEGER" property="hour" />
+    <result column="win_d_inst" jdbcType="DOUBLE" property="winDInst" />
+    <result column="tem_min_24h" jdbcType="DOUBLE" property="temMin24h" />
+    <result column="town" jdbcType="VARCHAR" property="town" />
+    <result column="tem_change_24h" jdbcType="DOUBLE" property="temChange24h" />
+    <result column="gst_5cm" jdbcType="DOUBLE" property="gst5cm" />
+    <result column="tem_max_24h" jdbcType="DOUBLE" property="temMax24h" />
+    <result column="station_height" jdbcType="DOUBLE" property="stationHeight" />
+    <result column="win_s_inst_max" jdbcType="DOUBLE" property="winSInstMax" />
+    <result column="pre_3h" jdbcType="DOUBLE" property="pre3h" />
+    <result column="gst_15cm" jdbcType="DOUBLE" property="gst15cm" />
+    <result column="rhu" jdbcType="DOUBLE" property="rhu" />
+    <result column="rhu_min" jdbcType="DOUBLE" property="rhuMin" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="gst_10cm" jdbcType="DOUBLE" property="gst10cm" />
+    <result column="gst_20cm" jdbcType="DOUBLE" property="gst20cm" />
+    <result column="pre_1h" jdbcType="DOUBLE" property="pre1h" />
+    <result column="tem" jdbcType="DOUBLE" property="tem" />
+    <result column="win_s_max" jdbcType="DOUBLE" property="winSMax" />
+    <result column="win_s_avg_2mi" jdbcType="DOUBLE" property="winSAvg2mi" />
+    <result column="pre_24h" jdbcType="DOUBLE" property="pre24h" />
+    <result column="win_d_avg_2mi" jdbcType="DOUBLE" property="winDAvg2mi" />
+    <result column="dpt" jdbcType="DOUBLE" property="dpt" />
+    <result column="county" jdbcType="VARCHAR" property="county" />
+    <result column="win_s_inst" jdbcType="DOUBLE" property="winSInst" />
+    <result column="pre_12h" jdbcType="DOUBLE" property="pre12h" />
+    <result column="prs" jdbcType="DOUBLE" property="prs" />
+    <result column="day" jdbcType="INTEGER" property="day" />
+    <result column="disease_type" jdbcType="VARCHAR" property="diseaseType" />
+    <result column="severity" jdbcType="VARCHAR" property="severity" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <sql id="Base_Column_List">
+    ground_histor_meteo_data_tab_id, pre, tem_max, tem_min, month, station_name, station_number, 
+    province, pre_6h, gst, city, hour, win_d_inst, tem_min_24h, town, tem_change_24h, 
+    gst_5cm, tem_max_24h, station_height, win_s_inst_max, pre_3h, gst_15cm, rhu, rhu_min, 
+    year, gst_10cm, gst_20cm, pre_1h, tem, win_s_max, win_s_avg_2mi, pre_24h, win_d_avg_2mi, 
+    dpt, county, win_s_inst, pre_12h, prs, day, disease_type, severity
+  </sql>
+
+  <sql id="Base_Column_Little">
+    year,month,day,hour,province,city,county,town,tem,pre_24h,rhu,severity
+  </sql>
+
+
+  <!--按id查询-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ground_histor_meteo_data_label_bacterial_wilt
+    where ground_histor_meteo_data_tab_id = #{groundHistorMeteoDataTabId,jdbcType=VARCHAR}
+  </select>
+
+  <!--每次随机获取number条数据-->
+  <select id="getAll" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ground_histor_meteo_data_label_bacterial_wilt
+    ORDER BY random() limit #{number}
+  </select>
+
+  <!--获取总数据条数-->
+  <select id="getCount" resultType="Long">
+    select count(*)
+    from ground_histor_meteo_data_label_bacterial_wilt
+  </select>
+
+  <!--分段获取数据-->
+  <select id="getLimit" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_Little" />
+    from ground_histor_meteo_data_label_bacterial_wilt
+    limit #{pageSize} offset #{firstResult}
+  </select>
+
+
+</mapper>
